@@ -1,25 +1,25 @@
-function getCharacterData(){
-    fetch('links.php?fetch_array=true') // Añadimos el parámetro a la URL
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error en la solicitud: ' + response.statusText);
-        }
-        return response // Convertir respuesta a JSON
-    })
-    .then(array => {
-        console.log(array); // ["valor1", "valor2", "valor3"]
-        alert("Array recibido: " + array.join(', '));
-    })
-    .catch(error => {
-        console.error('Hubo un problema:', error);
-        alert('No se pudo cargar el array.');
-    });
+function getCharacterData(name, character){
+    try {
+        // research ya es un objeto JSON, no necesitas fetch
+        console.log("Nombre:", name);
+        console.log("Datos del personaje:", character);
+        document.write("<link rel='stylesheet' href='styles/table_style.css'>")
+        document.write(generateCharacterTable(character)) 
+
+        // Aquí puedes usar los datos del personaje como desees
+        // Por ejemplo, mostrarlos en un modal o en un contenedor HTML
+    } catch (error) {
+        console.error('Hubo un problema al procesar los datos:', error);
+        alert('No se pudo cargar la información del personaje.');
+    }
 }
 
 // Función para generar la tabla con los datos del personaje
 function generateCharacterTable(character) {
-    var tableHtml = '<table class="container">';
-    for (var attributeName in character) {
+    let image = character['image']
+    let tableHtml = `<div class='info'><img src="${image}" class="character-img"/>`
+    tableHtml += '<table class="container">';
+    for (let attributeName in character) {
         if (character.hasOwnProperty(attributeName)) {
             var attribute = character[attributeName];
             if (Array.isArray(attribute)) {
@@ -33,7 +33,7 @@ function generateCharacterTable(character) {
             }
         }
     }
-    tableHtml += '</table>';
+    tableHtml += '</table></div>';
     return tableHtml;
 }
 

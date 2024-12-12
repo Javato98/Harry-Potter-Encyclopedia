@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchCharacter'])){
     }
 
 
-
     function searchCharacter($data){
         echo "<div class='gallery'>";
         $dataId = 0;
@@ -24,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchCharacter'])){
         echo "</div>";
     }
     
+    
 
     function showImage($character, $name, $dataId){
         
@@ -34,12 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchCharacter'])){
                 }else{
                     $srcImage = $attribute;
                 }
-                echo "<div class='container-img-info'><img src='$srcImage' class='img-info' id='$dataId' onclick='getCharacterData(this)'><p>$name $dataId</p></div>";
+
+                // Adaptamos las variables para que puedan ser interpretadas por JavaScript
+                $characterJson = htmlspecialchars(json_encode($character), ENT_QUOTES, 'UTF-8');
+                $nameEscaped = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+                echo "<div class='container-img-info'><img src='$srcImage' class='img-info' id='$dataId' onclick='getCharacterData(\"$nameEscaped\", $characterJson)'><p>$name $dataId</p></div>";
             }
         }
     }
-
-
 
     $research = getContent($name);
 
@@ -51,7 +53,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchCharacter'])){
     
     $researchData = $research['data'];
     $character = searchCharacter($researchData);
-
-
 }
 ?>

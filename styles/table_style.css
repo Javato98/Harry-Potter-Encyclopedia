@@ -11,32 +11,32 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   line-height: 1.42em;
-  color:#aea9a1;
+  color:rgb(232, 232, 232);
   background-color:#00001b;
 }
 
 h1 {
-  font-size:3em; 
+  font-size: 3em; 
   font-weight: 300;
-  line-height:1em;
+  line-height: 1em;
   text-align: center;
-  color: #4DC3FA;
+  color: #D9C091; /* Color dorado para resaltar títulos */
 }
 
 h2 {
-  font-size:1em; 
+  font-size: 1em; 
   font-weight: 300;
   text-align: center;
   display: block;
-  line-height:1em;
+  line-height: 1em;
   padding-bottom: 2em;
-  color: #FB667A;
+  color: #BF834E; /* Un tono marrón cálido */
 }
 
 h2 a {
   font-weight: 700;
   text-transform: uppercase;
-  color: #FB667A;
+  color: #BF834E; /* Consistencia con el color de los subtítulos */
   text-decoration: none;
 }
 
@@ -44,73 +44,87 @@ h2 a {
 .yellow { color: #FFF842; }
 
 .container th h1 {
-	  font-weight: bold;
-	  font-size: 1em;
+  font-weight: bold;
+  font-size: 1em;
   text-align: left;
-  color: #185875;
+  color: #8C704F; /* Tono marrón suave, acorde con la estética de Hogwarts */
 }
 
 .container td {
-	  font-weight: normal;
-	  font-size: 1em;
+  font-weight: normal;
+  font-size: 1em;
   -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
-	        box-shadow: 0 2px 2px -2px #0E1119;
+  -moz-box-shadow: 0 2px 2px -2px #0E1119;
+  box-shadow: 0 2px 2px -2px #0E1119;
 }
 
 .container {
-	  text-align: left;
-	  overflow: hidden;
-	  width: 80%;
-	  margin: 0 auto;
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
   display: table;
   padding: 0 0 8em 0;
 }
 
 .container td, .container th {
-	  padding-bottom: 2%;
-	  padding-top: 2%;
-  padding-left:2%;  
+  padding-bottom: 2%;
+  padding-top: 2%;
+  padding-left: 2%;  
 }
 
 /* Background-color of the odd rows */
 .container tr:nth-child(odd) {
-	  background-color: #323C50;
+  background-color: #40372C; /* Color oscuro, tono madera, para resaltar la atmósfera de Hogwarts */
 }
 
 /* Background-color of the even rows */
 .container tr:nth-child(even) {
-	  background-color: #2C3446;
+  background-color: #8C704F; /* Un tono marrón que complementa la paleta */
 }
 
 .container th {
-	  background-color: #1F2739;
+  background-color: #BF834E; /* Un color cálido que resalta los encabezados */
 }
 
-.container td:first-child { color: #FB667A; }
-
-.container tr:hover {
-   background-color: #464A52;
--webkit-box-shadow: 0 6px 6px -6px #0E1119;
-	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
-	        box-shadow: 0 6px 6px -6px #0E1119;
+.container td:first-child { 
+  color: #e7d4b1; /* Color dorado para los primeros valores (como el nombre del personaje) */
 }
+
+
 
 .container td:hover {
-  background-color: #FFF842;
-  color: #403E10;
+  background-color: #D9C091; /* Amarillo para el hover */
+  color: #403E10; /* Texto oscuro para el hover */
   font-weight: bold;
   
-  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  box-shadow: rgba(25, 25, 25, 0.489) -1px 1px, rgba(25, 25, 25, 0.489) -2px 2px, rgba(25, 25, 25, 0.489) -3px 3px, rgba(25, 25, 25, 0.489) -4px 4px, rgba(25, 25, 25, 0.489) -5px 5px, rgba(25, 25, 25, 0.489) -6px 6px;
   transform: translate3d(6px, -6px, 0);
   
   transition-delay: 0s;
-	  transition-duration: 0.4s;
-	  transition-property: all;
+  transition-duration: 0.4s;
+  transition-property: all;
   transition-timing-function: line;
 }
 
 @media (max-width: 800px) {
-.container td:nth-child(4),
-.container th:nth-child(4) { display: none; }
+  .container td:nth-child(4),
+  .container th:nth-child(4) { 
+    display: none; 
+  }
 }
+
+
+.info{
+  display: flex;
+  flex-direction: column;
+}
+
+.character-img{
+  text-align: center;
+  margin: 50px auto;
+  border: 5px solid #BFA473;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 5px ;
+}
+
