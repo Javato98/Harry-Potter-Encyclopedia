@@ -51,11 +51,14 @@ h2 a {
 }
 
 .container td {
-  font-weight: normal;
   font-size: 1em;
   -webkit-box-shadow: 0 2px 2px -2px #0E1119;
   -moz-box-shadow: 0 2px 2px -2px #0E1119;
   box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.attribute-name{
+  font-weight: bold;
 }
 
 .container {
@@ -128,3 +131,8 @@ h2 a {
   box-shadow: 0px 0px 10px 5px ;
 }
 
+.link{
+  text-decoration: none;
+  color: inherit;
+
+}

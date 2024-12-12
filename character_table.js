@@ -21,19 +21,55 @@ function generateCharacterTable(character) {
     tableHtml += '<table class="container">';
     for (let attributeName in character) {
         if (character.hasOwnProperty(attributeName)) {
-            var attribute = character[attributeName];
-            if (Array.isArray(attribute)) {
-                tableHtml += `<tr><td>${attributeName}</td><td><ul>`;
-                attribute.forEach(dataAttribute => {
-                    tableHtml += `<li>${dataAttribute}</li>`;
-                });
-                tableHtml += '</ul></td></tr>';
-            } else {
-                tableHtml += `<tr><td><strong>${attributeName}</strong></td><td><span>${attribute}</span></td></tr>`;
+            let attribute = character[attributeName];
+
+            if (attribute == '' || attribute == null || attributeName == 'image'){
+                continue
             }
+
+            if (Array.isArray(attribute)) {
+                let listTags = ['<li>', '</li>', '<ul>', '</ul>']
+                if (attribute.length <= 1){
+                    listTags[0] = '<span>'
+                    listTags[1] = '</span>'
+                    listTags[2] = ''
+                    listTags[3] = ''
+                }
+                    
+                tableHtml += `<tr><td class="attribute-name">${prepareStr(attributeName)}</td><td>${listTags[2]}`;
+                attribute.forEach(dataAttribute => {
+                    tableHtml += `${listTags[0]}${dataAttribute}${listTags[1]}`;
+                });
+                tableHtml += `${listTags[3]}</td></tr>`;
+            } else {
+                if (attributeName == "wiki"){
+                    attribute = `<a href="${attribute}" class="link">Pincha aquí para más información sobre ${character['name']}</a>`
+                }
+                tableHtml += `<tr><td class="attribute-name">${prepareStr(attributeName)}</td><td><span>${prepareStr(attribute)}</span></td></tr>`;
+            }
+
         }
     }
     tableHtml += '</table></div>';
     return tableHtml;
+}
+    
+
+
+function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+function removeDash(str) {
+    str = (str.includes('-')) ? str.replace(/-/g, ' ') :
+          (str.includes('_')) ? str.replace(/_/g, ' ') : str;
+
+    return str
+}
+
+function prepareStr(str){
+    str = capitalizeFirstLetter(str)
+    str = removeDash(str)
+    return str
 }
 
