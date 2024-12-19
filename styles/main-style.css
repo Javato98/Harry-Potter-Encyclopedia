@@ -1,0 +1,115 @@
+@font-face {
+    font-family: 'harry_potter';
+    src: url('../fonts/HARRYP__.TTF');
+}
+
+@font-face {
+    font-family: 'fell english';
+    src: url(../fonts/IM_Fell_DW_Pica/IMFellDWPica-Regular.ttf);
+}
+body{
+    height: 100vh;
+    background-color:#00001b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-img{
+    width: 600px;
+    margin: 50px auto;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    margin-bottom: 150px;
+}
+
+
+.container-img-info{
+    text-align: center;
+    width: 350px;
+}
+
+
+.gallery{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 200px 50px;
+    margin: auto 100px;
+}
+
+.img-info{
+    width: auto;
+    max-width: 350px; 
+    height: 300px;
+}
+
+/* ENLACES DEL INDEX.HTML */
+
+#categories{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category{
+ 
+    all: unset;
+    color: #6c6c96;
+    font-size: 4em;
+    font-family: 'fell English';
+}
+
+.category:hover{
+    color: rgba(169, 152, 54, 0.721);;
+}
+
+
+
+
+/* FORMULARIO */
+
+.form-input {
+    all: unset;
+    border: 2px solid #71672e;
+    border-radius: 5px;
+    background-color: #36364d;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 8px #625925;
+    padding:2px 5px;
+}
+
+.form-input:focus {
+    outline: none;
+    background-color: #36364d;
+    border-color: #ffd700; 
+    box-shadow: 0 0 12px #ffd700;
+}
+
+
+.form-boton {
+    border: none;
+    background-color: #36364d;
+    color: rgb(232, 232, 232);
+    padding: 10px 20px;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.form-boton:hover {
+    background-color: #454564;
+}
+
+.form-boton:active {
+    background-color: #454564;
+}
+

@@ -13,24 +13,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchCharacter'])){
 
     function searchCharacter($data){
         echo "<div class='gallery'>";
-        $dataId = 0;
         foreach ($data as $characterData){
-            $dataId++;
             $character = $characterData['attributes'];
             $name = $character['name'];
-            showImage($character, $name, $dataId);
+            showImage($character, $name);
         }
         echo "</div>";
     }
     
     
 
-    function showImage($character, $name, $dataId){
+    function showImage($character, $name){
         
         foreach($character as $attributeName => $attribute){
             if ($attributeName == 'image'){
                 if ($attribute == null){
-                    $srcImage = 'https://images7.alphacoders.com/135/thumb-1920-1353023.png';
+                    $srcImage = 'images/no-wizard-image.png';
                 }else{
                     $srcImage = $attribute;
                 }
@@ -38,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchCharacter'])){
                 // Adaptamos las variables para que puedan ser interpretadas por JavaScript
                 $characterJson = htmlspecialchars(json_encode($character), ENT_QUOTES, 'UTF-8');
                 $nameEscaped = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-                echo "<div class='container-img-info'><img src='$srcImage' class='img-info' id='$dataId' onclick='getCharacterData(\"$nameEscaped\", $characterJson)'><p>$name $dataId</p></div>";
+                echo "<div class='container-img-info'><img src='$srcImage' class='img-info' onclick='getCharacterData(\"$nameEscaped\", $characterJson)'><p>$name</p></div>";
             }
         }
     }

@@ -1,36 +1,24 @@
-
-
-<?php
-
-require 'links.php';
-
-?>
-
-
-<link rel="stylesheet" href="styles/table_style.css">
-<link rel="stylesheet" href="styles/styles.css">
-<script src="character_table.js"></script>
-
-
-<form action="" method="POST">
-    <input type="text" name="searchCharacter">
-    <input type="submit" name="send">
-</form>
-
-
-<!--     
-function showCharacter($character){
-        echo "<table class='container'>";
-        foreach($character as $attributeName => $attribute){
-            if (is_array($attribute)){
-                echo "<tr><td>$attributeName</td><td><ul>";
-                foreach ($attribute as $dataAttribute){
-                    echo "<li>$dataAttribute</li>";
-                }
-                echo '</ul></td></tr>';
-            } elseif ($attributeName != 'image') {
-                echo "<tr><td><strong>$attributeName</strong></td><td><span>$attribute</span></td></tr>";
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main-style.css">
+    <style>
+        body{
+            justify-content: center;
         }
-        echo "</table>";
-    } -->
+    </style>
+</head>
+<body>
+    <img src="images/font_the_restricted_section.png" alt="">
+    <div id="categories">
+        <a href="character.php" class="category">Characters</a>
+        <a href="" class="category">Spells</a>
+        <a href="" class="category">Potions</a>
+        <a href="" class="category">Movies</a>
+        <a href="" class="category">Books</a>
+    </div>
+</body>
+</html>
