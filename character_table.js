@@ -1,10 +1,10 @@
-function getCharacterData(name, character){
+function getitemData(name, item){
     try {
         // research ya es un objeto JSON, no necesitas fetch
         console.log("Nombre:", name);
-        console.log("Datos del personaje:", character);
-        document.write("<link rel='stylesheet' href='styles/table_style.css'>")
-        document.write(generateCharacterTable(character)) 
+        console.log("Datos del personaje:", item);
+        document.write("<link rel='stylesheet' href='../styles/table_style.css'>")
+        document.write(generateitemTable(item)) 
 
         // Aquí puedes usar los datos del personaje como desees
         // Por ejemplo, mostrarlos en un modal o en un contenedor HTML
@@ -15,13 +15,13 @@ function getCharacterData(name, character){
 }
 
 // Función para generar la tabla con los datos del personaje
-function generateCharacterTable(character) {
-    let image = character['image']
-    let tableHtml = `<div class='info'><img src="${image}" class="character-img"/>`
+function generateitemTable(item) {
+    let image = item['image']
+    let tableHtml = `<div class='info'><img src="${image}" class="item-img"/>`
     tableHtml += '<table class="container">';
-    for (let attributeName in character) {
-        if (character.hasOwnProperty(attributeName)) {
-            let attribute = character[attributeName];
+    for (let attributeName in item) {
+        if (item.hasOwnProperty(attributeName)) {
+            let attribute = item[attributeName];
 
             if (attribute == '' || attribute == null || attributeName == 'image'){
                 continue
@@ -43,7 +43,7 @@ function generateCharacterTable(character) {
                 tableHtml += `${listTags[3]}</td></tr>`;
             } else {
                 if (attributeName == "wiki"){
-                    attribute = `<a href="${attribute}" class="link">Pincha aquí para más información sobre ${character['name']}</a>`
+                    attribute = `<a href="${attribute}" class="link">Pincha aquí para más información sobre ${item['name']}</a>`
                 }
                 tableHtml += `<tr><td class="attribute-name">${prepareStr(attributeName)}</td><td><span>${prepareStr(attribute)}</span></td></tr>`;
             }

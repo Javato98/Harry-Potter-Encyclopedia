@@ -39,6 +39,7 @@ form{
     flex-wrap: wrap;
     gap: 200px 50px;
     margin: auto 200px;    /* responsive */
+    cursor: pointer;
 }
 
 .img-info{
@@ -62,6 +63,7 @@ form{
     color: #6c6c96;
     font-size: 4em;
     font-family: 'fell English';
+    cursor: pointer;
 }
 
 .category:hover{

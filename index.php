@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/main-style.css">
     <style>
         body{
+            display: flex;
             justify-content: center;
         }
     </style>
@@ -14,11 +15,11 @@
 <body>
     <img src="images/font_the_restricted_section.png" alt="">
     <div id="categories">
-        <a href="character.php" class="category">Characters</a>
-        <a href="" class="category">Spells</a>
-        <a href="" class="category">Potions</a>
-        <a href="" class="category">Movies</a>
-        <a href="" class="category">Books</a>
+        <a href="pages/character.php" class="category">Characters</a>
+        <a href="pages/spells.php" class="category">Spells</a>
+        <a href="pages/potions.php" class="category">Potions</a>
+
     </div>
+    
 </body>
 </html>

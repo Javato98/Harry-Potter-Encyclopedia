@@ -1,47 +1,48 @@
 <?php
 const API_URL = "https://api.potterdb.com/v1";
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchCharacter'])){
-    $name = $_POST['searchCharacter'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["search_$type"])) {
+    $name = $_POST["search_$type"];
     
     // Función de consulta mejorada con mensajes de depuración
-    function getContent($query) {
-        $url = API_URL . "/characters?filter[name_cont]=" . urlencode($query);
+    function getContent($query, $type) {
+        $url = API_URL . "/$type?filter[name_cont]=" . urlencode($query);
         $result = file_get_contents($url);
         return json_decode($result, true);
     }
 
 
-    function searchCharacter($data){
+    function searchitem($data){
         echo "<div class='gallery'>";
-        foreach ($data as $characterData){
-            $character = $characterData['attributes'];
-            $name = $character['name'];
-            showImage($character, $name);
+        foreach ($data as $itemData){
+            $item = $itemData['attributes'];
+            $name = $item['name'];
+            showImage($item, $name);
         }
         echo "</div>";
     }
     
     
 
-    function showImage($character, $name){
+    function showImage($item, $name){
         
-        foreach($character as $attributeName => $attribute){
+        foreach($item as $attributeName => $attribute){
             if ($attributeName == 'image'){
                 if ($attribute == null){
-                    $srcImage = 'images/no-wizard-image.png';
+                    $srcImage = '../images/no-wizard-image.png';
                 }else{
                     $srcImage = $attribute;
                 }
 
                 // Adaptamos las variables para que puedan ser interpretadas por JavaScript
-                $characterJson = htmlspecialchars(json_encode($character), ENT_QUOTES, 'UTF-8');
+                $itemJson = htmlspecialchars(json_encode($item), ENT_QUOTES, 'UTF-8');
                 $nameEscaped = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-                echo "<div class='container-img-info'><img src='$srcImage' class='img-info' onclick='getCharacterData(\"$nameEscaped\", $characterJson)'><p>$name</p></div>";
+                echo "<div class='container-img-info'><img src='$srcImage' class='img-info' onclick='getitemData(\"$nameEscaped\", $itemJson)'><p>$name</p></div>";
             }
         }
     }
 
-    $research = getContent($name);
+    $research = getContent($name, $type);
 
     if (isset($_GET['fetch_array']) && $_GET['fetch_array'] === 'true') {
         header('Content-Type: application/json'); // Indicar que se enviará JSON
@@ -50,6 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchCharacter'])){
     }
     
     $researchData = $research['data'];
-    $character = searchCharacter($researchData);
+    $item = searchitem($researchData);
 }
 ?>
