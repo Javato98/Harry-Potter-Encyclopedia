@@ -1,10 +1,12 @@
-function getitemData(name, item){
+function getitemData(name, item, itemType){
     try {
         // research ya es un objeto JSON, no necesitas fetch
         console.log("Nombre:", name);
-        console.log("Datos del personaje:", item);
+        console.log("Datos del ítem:", item);
         document.write("<link rel='stylesheet' href='../styles/table_style.css'>")
-        document.write(generateitemTable(item)) 
+        document.write(generateitemTable(item, itemType)) 
+        document.write("<script src='event.js'></script>")
+        
 
         // Aquí puedes usar los datos del personaje como desees
         // Por ejemplo, mostrarlos en un modal o en un contenedor HTML
@@ -15,8 +17,21 @@ function getitemData(name, item){
 }
 
 // Función para generar la tabla con los datos del personaje
-function generateitemTable(item) {
+function generateitemTable(item, itemType) {
     let image = item['image']
+    if (image == null){
+        switch (itemType){
+            case "characters":
+                image = "../images/no-characters-image.png"
+                break
+            case "spells":
+                image = "../images/no-spells-image.png"
+                break
+            case "potions":
+                image = "../images/no-potions-image.png"
+                break
+        }
+    }
     let tableHtml = `<div class='info'><img src="${image}" class="item-img"/>`
     tableHtml += '<table class="container">';
     for (let attributeName in item) {
@@ -36,11 +51,12 @@ function generateitemTable(item) {
                     listTags[3] = ''
                 }
                     
-                tableHtml += `<tr><td class="attribute-name">${prepareStr(attributeName)}</td><td>${listTags[2]}`;
+                tableHtml += `<tr><td class="attribute-name">${prepareStr(attributeName)}</td><td class="dropdown">${listTags[2]}`;
                 attribute.forEach(dataAttribute => {
                     tableHtml += `${listTags[0]}${dataAttribute}${listTags[1]}`;
                 });
                 tableHtml += `${listTags[3]}</td></tr>`;
+
             } else {
                 if (attributeName == "wiki"){
                     attribute = `<a href="${attribute}" class="link">Pincha aquí para más información sobre ${item['name']}</a>`
@@ -72,4 +88,5 @@ function prepareStr(str){
     str = removeDash(str)
     return str
 }
+
 

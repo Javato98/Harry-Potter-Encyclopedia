@@ -16,3 +16,4 @@ $type = 'characters';
 require '../links.php';
 
 ?>
+

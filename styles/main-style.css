@@ -46,6 +46,7 @@ form{
     width: auto;
     max-width: 350px; 
     height: 300px;
+    border-radius: 10px;
 }
 
 /* ENLACES DEL INDEX.HTML */
@@ -115,3 +116,38 @@ form{
     background-color: #454564;
 }
 
+/* Para ipad pro */
+@media (max-width: 1400px) {
+    #title-index{
+        width: 1000px;
+    }
+    
+    
+    #categories a{
+        font-size: 4em;
+    }
+}
+
+/* Para ipad air */
+@media (max-width: 1200px) {
+    #title-index{
+        width: 800px;
+    }
+    
+    
+    #categories a{
+        font-size: 4em;
+    }
+    }
+  
+/* Para móviles */
+@media (max-width: 480px) {
+#title-index{
+    width: 300px;
+}
+
+
+#categories a{
+    font-size: 2em;
+}
+}

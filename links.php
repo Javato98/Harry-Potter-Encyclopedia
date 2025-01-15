@@ -12,24 +12,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["search_$type"])) {
     }
 
 
-    function searchitem($data){
+    function searchitem($data, $type){
         echo "<div class='gallery'>";
         foreach ($data as $itemData){
             $item = $itemData['attributes'];
             $name = $item['name'];
-            showImage($item, $name);
+            showImage($item, $name, $type);
         }
         echo "</div>";
     }
     
     
 
-    function showImage($item, $name){
+    function showImage($item, $name, $type){
         
         foreach($item as $attributeName => $attribute){
             if ($attributeName == 'image'){
                 if ($attribute == null){
-                    $srcImage = '../images/no-wizard-image.png';
+                    $srcImage = "../images/no-$type-image.png";
                 }else{
                     $srcImage = $attribute;
                 }
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["search_$type"])) {
                 // Adaptamos las variables para que puedan ser interpretadas por JavaScript
                 $itemJson = htmlspecialchars(json_encode($item), ENT_QUOTES, 'UTF-8');
                 $nameEscaped = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-                echo "<div class='container-img-info'><img src='$srcImage' class='img-info' onclick='getitemData(\"$nameEscaped\", $itemJson)'><p>$name</p></div>";
+                echo "<div class='container-img-info'><img src='$srcImage' class='img-info' onclick='getitemData(\"$nameEscaped\", $itemJson, \"$type\")'><p>$name</p></div>";
             }
         }
     }
@@ -51,6 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["search_$type"])) {
     }
     
     $researchData = $research['data'];
-    $item = searchitem($researchData);
+    $item = searchitem($researchData, $type);
 }
 ?>
