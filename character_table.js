@@ -104,3 +104,14 @@ function tDdropdown(countID) {
     dropdown.style.display = "block";
     }
 };
+
+function header(){
+    document.write(`<header>
+    <div>
+        <div id="nav">
+            <a href="character.php"><p>Characters</p></a>
+            <a href="spells.php"><p>Spells</p></a>
+            <a href="potions.php"><p>Potions</p></a>
+    </div>
+</header>`)
+}
