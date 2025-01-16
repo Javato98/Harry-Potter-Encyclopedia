@@ -5,7 +5,6 @@ function getitemData(name, item, itemType){
         console.log("Datos del ítem:", item);
         document.write("<link rel='stylesheet' href='../styles/table_style.css'>")
         document.write(generateitemTable(item, itemType)) 
-        document.write("<script src='event.js'></script>")
         
 
         // Aquí puedes usar los datos del personaje como desees
@@ -34,7 +33,9 @@ function generateitemTable(item, itemType) {
     }
     let tableHtml = `<div class='info'><img src="${image}" class="item-img"/>`
     tableHtml += '<table class="container">';
+    let countID = 0
     for (let attributeName in item) {
+        countID ++
         if (item.hasOwnProperty(attributeName)) {
             let attribute = item[attributeName];
 
@@ -42,7 +43,7 @@ function generateitemTable(item, itemType) {
                 continue
             }
 
-            if (Array.isArray(attribute)) {
+            if (Array.isArray(attribute) && attribute.length > 1) {
                 let listTags = ['<li>', '</li>', '<ul>', '</ul>']
                 if (attribute.length <= 1){
                     listTags[0] = '<span>'
@@ -51,13 +52,16 @@ function generateitemTable(item, itemType) {
                     listTags[3] = ''
                 }
                     
-                tableHtml += `<tr><td class="attribute-name">${prepareStr(attributeName)}</td><td class="dropdown">${listTags[2]}`;
+                tableHtml += `<tr><td class="attribute-name" onclick="tDdropdown(${countID})">${prepareStr(attributeName)}</td><td class="dropdown" id="${countID}">${listTags[2]}`;
                 attribute.forEach(dataAttribute => {
                     tableHtml += `${listTags[0]}${dataAttribute}${listTags[1]}`;
                 });
                 tableHtml += `${listTags[3]}</td></tr>`;
 
             } else {
+                if (Array.isArray(attribute)){
+                    attribute = attribute[0]
+                }
                 if (attributeName == "wiki"){
                     attribute = `<a href="${attribute}" class="link">Pincha aquí para más información sobre ${item['name']}</a>`
                 }
@@ -90,3 +94,13 @@ function prepareStr(str){
 }
 
 
+function tDdropdown(countID) {
+
+    let dropdown = document.getElementById(countID)
+  
+    if (dropdown.style.display === "block") {
+    dropdown.style.display = "none";
+    } else {
+    dropdown.style.display = "block";
+    }
+};

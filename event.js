@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+function tDdropdown() {
     // Todo el código que depende del DOM va aquí
     const classAttributeName = document.querySelector(".attribute-name");
     const dropdown = document.querySelector(".dropdown");
@@ -10,5 +10,5 @@ document.addEventListener("DOMContentLoaded", function() {
         dropdown.style.display = "block";
       }
     });
-  });
+  };
   
