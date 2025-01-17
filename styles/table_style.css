@@ -59,6 +59,10 @@ h2 a {
   font-weight: bold;
 }
 
+.dropdown{
+  display: none;
+}
+
 .container {
   text-align: left;
   overflow: hidden;

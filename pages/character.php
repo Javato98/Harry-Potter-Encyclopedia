@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="../styles/main-style.css">
 <script src="../character_table.js"></script>
 
+<script>header()</script>
+
 <img src="../images/character_font.png" alt="" class="title-img">
 
 <form action="" method="POST">
@@ -16,3 +18,4 @@ $type = 'characters';
 require '../links.php';
 
 ?>
+

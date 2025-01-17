@@ -8,6 +8,7 @@
     src: url(../fonts/IM_Fell_DW_Pica/IMFellDWPica-Regular.ttf);
 }
 body{
+    margin: 0;
     height: 100vh;
     background-color:#00001b;
     display: flex;
@@ -15,9 +16,36 @@ body{
     align-items: center;
 }
 
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+    background-color: #01211e;
+    width: 100vw;
+    position: fixed;
+
+}
+
+header div{
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .title-img{
     width: 600px;
     margin: 50px auto;
+    margin-top: 170px;
 }
 
 form{
@@ -46,6 +74,7 @@ form{
     width: auto;
     max-width: 350px; 
     height: 300px;
+    border-radius: 10px;
 }
 
 /* ENLACES DEL INDEX.HTML */
@@ -115,3 +144,38 @@ form{
     background-color: #454564;
 }
 
+/* Para ipad pro */
+@media (max-width: 1400px) {
+    #title-index{
+        width: 1000px;
+    }
+    
+    
+    #categories a{
+        font-size: 4em;
+    }
+}
+
+/* Para ipad air */
+@media (max-width: 1200px) {
+    #title-index{
+        width: 800px;
+    }
+    
+    
+    #categories a{
+        font-size: 4em;
+    }
+    }
+  
+/* Para móviles */
+@media (max-width: 480px) {
+#title-index{
+    width: 300px;
+}
+
+
+#categories a{
+    font-size: 2em;
+}
+}

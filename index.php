@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <img src="images/font_the_restricted_section.png" alt="">
+    <img src="images/font_the_restricted_section.png" alt="" id="title-index">
     <div id="categories">
         <a href="pages/character.php" class="category">Characters</a>
         <a href="pages/spells.php" class="category">Spells</a>

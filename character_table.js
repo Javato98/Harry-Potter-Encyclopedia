@@ -1,10 +1,11 @@
-function getitemData(name, item){
+function getitemData(name, item, itemType){
     try {
         // research ya es un objeto JSON, no necesitas fetch
         console.log("Nombre:", name);
-        console.log("Datos del personaje:", item);
+        console.log("Datos del ítem:", item);
         document.write("<link rel='stylesheet' href='../styles/table_style.css'>")
-        document.write(generateitemTable(item)) 
+        document.write(generateitemTable(item, itemType)) 
+        
 
         // Aquí puedes usar los datos del personaje como desees
         // Por ejemplo, mostrarlos en un modal o en un contenedor HTML
@@ -15,11 +16,26 @@ function getitemData(name, item){
 }
 
 // Función para generar la tabla con los datos del personaje
-function generateitemTable(item) {
+function generateitemTable(item, itemType) {
     let image = item['image']
+    if (image == null){
+        switch (itemType){
+            case "characters":
+                image = "../images/no-characters-image.png"
+                break
+            case "spells":
+                image = "../images/no-spells-image.png"
+                break
+            case "potions":
+                image = "../images/no-potions-image.png"
+                break
+        }
+    }
     let tableHtml = `<div class='info'><img src="${image}" class="item-img"/>`
     tableHtml += '<table class="container">';
+    let countID = 0
     for (let attributeName in item) {
+        countID ++
         if (item.hasOwnProperty(attributeName)) {
             let attribute = item[attributeName];
 
@@ -27,7 +43,7 @@ function generateitemTable(item) {
                 continue
             }
 
-            if (Array.isArray(attribute)) {
+            if (Array.isArray(attribute) && attribute.length > 1) {
                 let listTags = ['<li>', '</li>', '<ul>', '</ul>']
                 if (attribute.length <= 1){
                     listTags[0] = '<span>'
@@ -36,12 +52,16 @@ function generateitemTable(item) {
                     listTags[3] = ''
                 }
                     
-                tableHtml += `<tr><td class="attribute-name">${prepareStr(attributeName)}</td><td>${listTags[2]}`;
+                tableHtml += `<tr><td class="attribute-name" onclick="tDdropdown(${countID})">${prepareStr(attributeName)}</td><td class="dropdown" id="${countID}">${listTags[2]}`;
                 attribute.forEach(dataAttribute => {
                     tableHtml += `${listTags[0]}${dataAttribute}${listTags[1]}`;
                 });
                 tableHtml += `${listTags[3]}</td></tr>`;
+
             } else {
+                if (Array.isArray(attribute)){
+                    attribute = attribute[0]
+                }
                 if (attributeName == "wiki"){
                     attribute = `<a href="${attribute}" class="link">Pincha aquí para más información sobre ${item['name']}</a>`
                 }
@@ -73,3 +93,25 @@ function prepareStr(str){
     return str
 }
 
+
+function tDdropdown(countID) {
+
+    let dropdown = document.getElementById(countID)
+  
+    if (dropdown.style.display === "block") {
+    dropdown.style.display = "none";
+    } else {
+    dropdown.style.display = "block";
+    }
+};
+
+function header(){
+    document.write(`<header>
+    <div>
+        <div id="nav">
+            <a href="character.php"><p>Characters</p></a>
+            <a href="spells.php"><p>Spells</p></a>
+            <a href="potions.php"><p>Potions</p></a>
+    </div>
+</header>`)
+}
