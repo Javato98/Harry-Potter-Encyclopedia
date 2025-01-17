@@ -22,7 +22,6 @@ header{
     align-items: center;
     color: white;
     font-size: 1.5em;
-    background-color: #01211e;
     width: 100vw;
     position: fixed;
 
@@ -42,10 +41,13 @@ header div{
     align-items: center;
 }
 
+
+
+
 .title-img{
-    width: 600px;
     margin: 50px auto;
     margin-top: 170px;
+    width: 20%;
 }
 
 form{
@@ -144,6 +146,10 @@ form{
     background-color: #454564;
 }
 
+.linkNav{
+    font-size: 1.5em;
+}
+
 /* Para ipad pro */
 @media (max-width: 1400px) {
     #title-index{
@@ -167,6 +173,7 @@ form{
         font-size: 4em;
     }
     }
+
   
 /* Para móviles */
 @media (max-width: 480px) {
@@ -179,3 +186,4 @@ form{
     font-size: 2em;
 }
 }
+

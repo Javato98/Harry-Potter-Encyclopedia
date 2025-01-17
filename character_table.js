@@ -52,7 +52,15 @@ function generateitemTable(item, itemType) {
                     listTags[3] = ''
                 }
                     
-                tableHtml += `<tr><td class="attribute-name" onclick="tDdropdown(${countID})">${prepareStr(attributeName)}</td><td class="dropdown" id="${countID}">${listTags[2]}`;
+                tableHtml += `<tr>
+                                <td class="attribute-name">
+                                    ${prepareStr(attributeName)}
+                                </td>
+                                <td class= "tdVisible" id="tdVisible${countID}" onclick="tdDropdown(${countID})">
+                                    hola <img src="../images/arrow-down.png" class="arrow">
+                                </td>
+                                <td class="dropdown" id="dropdown${countID}">
+                                    ${listTags[2]}`;
                 attribute.forEach(dataAttribute => {
                     tableHtml += `${listTags[0]}${dataAttribute}${listTags[1]}`;
                 });
@@ -94,14 +102,19 @@ function prepareStr(str){
 }
 
 
-function tDdropdown(countID) {
+function tdDropdown(countID) {
 
-    let dropdown = document.getElementById(countID)
+    let str_dropdown = "dropdown" + countID
+    let str_tdVisible = "tdVisible" + countID
+    let dropdown = document.getElementById(str_dropdown)
+    let tdVisible = document.getElementById(str_tdVisible)
   
     if (dropdown.style.display === "block") {
     dropdown.style.display = "none";
+    tdVisible.style.display = "block";
     } else {
     dropdown.style.display = "block";
+    tdVisible.style.display = "none";
     }
 };
 
@@ -109,9 +122,9 @@ function header(){
     document.write(`<header>
     <div>
         <div id="nav">
-            <a href="character.php"><p>Characters</p></a>
-            <a href="spells.php"><p>Spells</p></a>
-            <a href="potions.php"><p>Potions</p></a>
+            <a href="character.php" class="category linkNav"><p>Characters</p></a>
+            <a href="spells.php" class="category linkNav"><p>Spells</p></a>
+            <a href="potions.php" class="category linkNav"><p>Potions</p></a>
     </div>
 </header>`)
 }

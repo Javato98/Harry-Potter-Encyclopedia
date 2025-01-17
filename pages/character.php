@@ -6,7 +6,7 @@
 
 <script>header()</script>
 
-<img src="../images/character_font.png" alt="" class="title-img">
+<img src="../images/character_font.png" alt="" class="title-img" style="width: 25%;">
 
 <form action="" method="POST">
     <input type="text" name="search_characters" class="form-input">

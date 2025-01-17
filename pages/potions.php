@@ -7,7 +7,7 @@
 
 <script>header()</script>
 
-<img src="../images/potions_font.png" alt="" class="title-img" style="width: 20%;">
+<img src="../images/potions_font.png" alt="" class="title-img">
 
 <form action="" method="POST">
     <input type="text" name="search_potions" class="form-input">
